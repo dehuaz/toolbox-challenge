@@ -1,18 +1,7 @@
-@import url(https://cdn.jsdelivr.net/font-comicneue/1.1/font.css);
 
 
-
-}
-body{
-    font-family: 'Comic Neue', 'Helvetica Neue', 'Helvetica', sans-serif;
-    font-size: 16px;
-    background-image: url("../img/Background.png");
-    -webkit-align-self: center;
-    align-self: center;
-    color: #ffffff;
-
-}
-
-#info {
-    display: none;
-}
+#game-board img{
+    width: 20%;
+    height: 20%;
+    padding: 3px;
+    box-sizing: border-box;
