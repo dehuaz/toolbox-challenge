@@ -12,8 +12,17 @@ for (idx = 1; idx <= 32; idx++) {
     });
 } //for each title
 
+//Creates Instruction button that informs the user about how to play the Memory Game
+var exit = document.getElementById('help-button');
+exit.addEventListener('click', function () {
+    if (window.confirm('Instructions for the Memory Game\n\n1. Click on the Start New Game button to be dealt 16 random images\n2. Click on two images to see if they have the same image.\n3. If they are the same image, then it will disappear\n4. Continue until you have found 8 matching pairs and cleared the board')) {
+        window.location = "#";
+    }
+});
+
 //when document is ready...
 $(document).ready(function() {
+    //catch click event of start game button
     $('#start-game').click(function() {
        tilesList = _.shuffle(tilesList);
        var selectTiles = tilesList.slice(0, 8); //Select array values of 0 to 7 (8 values total)
@@ -48,6 +57,7 @@ $(document).ready(function() {
             $('#elapsed-seconds').text(elapsedSeconds + ' seconds');
         }, 1000);
         $('#game-board img').click(function () {
+            console.log(this.alt);
             var clickedImg = $(this);
             var tile = clickedImg.data('tile');
             flipTile(tile, clickedImg);
