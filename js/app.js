@@ -11,9 +11,6 @@ for (idx = 1; idx <= 32; idx++) {
         matched: false
     });
 } 
-//applied to all tiles
-
-
 
 $(document).ready(function() {
     //click button to start the game
@@ -80,6 +77,28 @@ function flipTile(tile, img) {
     }, 100);
 }
 
+//function for reset the gameBoard
 function resetBoard () {
     $('#game-board').empty()
+}
+
+//function for turning the tile
+function turnup (tile,img) {
+    var turnTile = [];
+    var turningPicture = [];
+    turnTile.push(tile);
+    turningPicture.push(img);
+    if (turnTile.length == 2);
+    turnTile[1].tilenum == turnTile[2].tilenum;
+    turnTile[1].matched = true;
+    turnTile[2].matched = true;
+    turningPicture[1].attr('src', turnTile[1].src);
+    turningPicture[2].attr('src', turnTile[2].src);
+    else {
+        turnTile[1].flipped = false;
+        turnTile[2].flipped = false;
+    }
+        
+
+
 }
