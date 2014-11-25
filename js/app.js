@@ -10,14 +10,18 @@ for (idx = 1; idx <= 32; idx++) {
         flipped: false,
         matched: false
     });
-} //for each title
+} 
+//applied to all tiles
 
-//when document is ready...
+
+
 $(document).ready(function() {
-    //catch click event of start game button
+    //click button to start the game
     $('#start-game').click(function() {
+        resetBoard() 
        tilesList = _.shuffle(tilesList);
-       var selectTiles = tilesList.slice(0, 8); //Select array values of 0 to 7 (8 values total)
+       var selectTiles = tilesList.slice(0, 8); 
+       //Select an array values of 0 to 7 for titlesList
        var tilePairs = [];
         _.forEach(selectTiles, function(tile) {
             tilePairs.push(tile);
@@ -42,6 +46,7 @@ $(document).ready(function() {
         });
         gameBoard.append(row);
         //get starting milliseconds
+        //Varabile for StartingTIme
         var startTime = Date.now();
         window.setInterval(function() {
             var elapsedSeconds = (Date.now() - startTime) / 1000;
@@ -53,9 +58,12 @@ $(document).ready(function() {
             var clickedImg = $(this);
             var tile = clickedImg.data('tile');
             flipTile(tile, clickedImg);
+            //start game button click
         });
-    }); //start game button click
-}); //document ready function
+    }); 
+    
+}); 
+
 
 function flipTile(tile, img) {
     window.setTimeout(function () {
@@ -70,4 +78,8 @@ function flipTile(tile, img) {
             img.fadeIn(100);
         });
     }, 100);
+}
+
+function resetBoard () {
+    $('#game-board').empty()
 }
