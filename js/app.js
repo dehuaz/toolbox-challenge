@@ -15,11 +15,13 @@ var timer;
 var Score = 0;
 var Reminder =8;
 var Attempts =0;
+var turnTile = [];
+var turningPicture = [];
 
-//Created a Instruction button for user to be inform on the function toward how to play the game
-$('#help').click(function()) {
-    alert ('How to Play the Memory Game/n This will be the Instruction to guide you to play
-        /n There is 16 random iamges/n Click on the two images that are the same/n Simply as that :)')
+//Created a Instruction button for user to be inform on the function toward how to play the game.
+//Created a alert when you clicked on the button. It will provide user will instruction toward the game.
+$('#help').click(function() {
+    alert ('This will be the Instruction to guide you to play the Memory Game. There is 16 random iamges, click on the two images that are the same. And you win.')
 });
 
 $(document).ready(function() {
@@ -62,12 +64,20 @@ $(document).ready(function() {
             var elapsedSeconds = (Date.now() - startTime) / 1000;
             elapsedSeconds = Math.floor(elapsedSeconds)
             $('#elapsed-seconds').text(elapsedSeconds + ' seconds');
+            if (Reminder == 0) {
+                alert("Congratulation, you won!");
+                resetBoard();
+            }
         }, 1000);
         $('#game-board img').click(function () {
-            console.log(this.alt);
             var clickedImg = $(this);
             var tile = clickedImg.data('tile');
-            flipTile(tile, clickedImg);
+            if (tile.flipped == false) {
+                flipTile(tile, clickedImg);
+                turnup(tile, clickedImg);
+            } else {
+                alert("This title has been already selected");
+            }
             //start game button click
         });
     }); 
@@ -93,36 +103,55 @@ function flipTile(tile, img) {
 //function for reset the gameBoard
 function resetBoard () {
     $('#game-board').empty()
+    $('#Score').empty();
+    $('#Reminder').empty();
+    $('#Attempts').empty();
+    $('#Result').empty();
     window.clearInterval(timer)
     Score = 0;
     Reminder = 8;
     Attempts = 0;
+    tilesList = [];
+    for (idx = 1; idx <= 32; idx++) {
+        tilesList.push ({
+            tileNum: idx,
+            src: 'img/tile' + idx + '.jpg',
+            flipped: false,
+            matched: false
+        });
+    } 
 }
 
 //function for turning the tile
 function turnup (tile,img) {
-    var turnTile = [];
-    var turningPicture = [];
-    turnTile.push(tile);
-    turningPicture.push(img);
-    if (turnTile.length == 2) {
-        if (turnTile[1].tileNum == turnTile[2].tileNum) {
-            turnTile[1].tileNum == turnTile[2].tileNum;
-            turnTile[1].matched = true;
-            turnTile[2].matched = true;
-            turningPicture[1].attr('src', turnTile[1].src);
-            turningPicture[2].attr('src', turnTile[2].src); 
-        }
-        else {
-        turnTile[1].flipped = false;
-        turnTile[2].flipped = false;
-        turningPicture[1].attr('src','img/tile-back.png');
-        turningPicture[2].attr('src','img/tile-back.png');
-        turntile = [];
-        turningPicture = [];
-    }
+    window.setTimeout (function() {
+        turnTile.push(tile);
+        turningPicture.push(img);
+        console.log(turnTile)
+        if (turnTile.length == 2) {
+            if (turnTile[1].tileNum == turnTile[0].tileNum) {
+                if (turnTile[0].matched == false && turnTile[1].matched == false) {
+                    Score = Score + 1;
+                    Reminder = Reminder - 1
+                    turnTile[1].matched = true;
+                    turnTile[0].matched = true;
+                    turningPicture[1].attr('src', turnTile[1].src);
+                    turningPicture[0].attr('src', turnTile[0].src); 
+                    $('#Result').text('Matched');
+                }
+            }
+            else {
+                Attempts = Attempts + 1;
+                turnTile[1].flipped = false;
+                turnTile[0].flipped = false;
+                turningPicture[1].attr('src','img/tile-back.png');
+                turningPicture[0].attr('src','img/tile-back.png');   
+                $('#Result').text('Not a Match');
+            }
+            turnTile = [];
+            turningPicture = [];
+        }   
+    }, 1000);
 }
-}
-
 
 
