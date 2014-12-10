@@ -96,10 +96,7 @@ function turnup (tile,img) {
             turningPicture[1].attr('src', turnTile[1].src);
             turningPicture[2].attr('src', turnTile[2].src); 
         }
-    }                                           
-        
-    }
-    else {
+        else {
         turnTile[1].flipped = false;
         turnTile[2].flipped = false;
         turningPicture[1].attr('src','img/tile-back.png');
@@ -107,6 +104,7 @@ function turnup (tile,img) {
         turntile = [];
         turningPicture = [];
     }
+}
 }
 
 
