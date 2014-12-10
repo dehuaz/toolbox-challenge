@@ -11,6 +11,7 @@ for (idx = 1; idx <= 32; idx++) {
         matched: false
     });
 } 
+var timer; 
 
 $(document).ready(function() {
     //click button to start the game
@@ -45,7 +46,7 @@ $(document).ready(function() {
         //get starting milliseconds
         //Varabile for StartingTIme
         var startTime = Date.now();
-        window.setInterval(function() {
+        timer = window.setInterval(function() {
             var elapsedSeconds = (Date.now() - startTime) / 1000;
             elapsedSeconds = Math.floor(elapsedSeconds)
             $('#elapsed-seconds').text(elapsedSeconds + ' seconds');
@@ -80,6 +81,7 @@ function flipTile(tile, img) {
 //function for reset the gameBoard
 function resetBoard () {
     $('#game-board').empty()
+    window.clearinterval(timer)
 }
 
 //function for turning the tile
