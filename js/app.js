@@ -12,6 +12,9 @@ for (idx = 1; idx <= 32; idx++) {
     });
 } 
 var timer; 
+var Score = 0;
+var Reminder =8;
+var Attempts =0;
 
 $(document).ready(function() {
     //click button to start the game
@@ -47,6 +50,9 @@ $(document).ready(function() {
         //Varabile for StartingTIme
         var startTime = Date.now();
         timer = window.setInterval(function() {
+            $(#Score).text(Score)
+            $(#Reminder).text(Reminder)
+            $(#Attempts).text(Attempts)
             var elapsedSeconds = (Date.now() - startTime) / 1000;
             elapsedSeconds = Math.floor(elapsedSeconds)
             $('#elapsed-seconds').text(elapsedSeconds + ' seconds');
