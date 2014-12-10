@@ -88,7 +88,7 @@ function turnup (tile,img) {
     var turningPicture = [];
     turnTile.push(tile);
     turningPicture.push(img);
-    if (turnTile.length == 2);
+    if (turnTile.length == 2) {
         if (turnTile[1].tileNum == turnTile[2].tileNum) {
             turnTile[1].tileNum == turnTile[2].tileNum;
             turnTile[1].matched = true;
@@ -96,6 +96,8 @@ function turnup (tile,img) {
             turningPicture[1].attr('src', turnTile[1].src);
             turningPicture[2].attr('src', turnTile[2].src); 
         }
+    }                                           
+        
     }
     else {
         turnTile[1].flipped = false;
