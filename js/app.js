@@ -110,6 +110,5 @@ function turnup (tile,img) {
 
 }
 
-function resetBoard() {
-    
 }
+
