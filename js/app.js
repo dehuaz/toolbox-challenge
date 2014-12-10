@@ -17,7 +17,10 @@ var Reminder =8;
 var Attempts =0;
 
 //Created a Instruction button for user to be inform on the function toward how to play the game
-
+$('#help').click(function()) {
+    alert ('How to Play the Memory Game/n This will be the Instruction to guide you to play
+        /n There is 16 random iamges/n Click on the two images that are the same/n Simply as that :)')
+});
 
 $(document).ready(function() {
     //click button to start the game
