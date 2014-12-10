@@ -17,7 +17,7 @@ var Reminder =8;
 var Attempts =0;
 
 //Created a Instruction button for user to be inform on the function toward how to play the game
-var 
+
 
 $(document).ready(function() {
     //click button to start the game
