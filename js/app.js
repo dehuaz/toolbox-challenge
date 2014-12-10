@@ -81,7 +81,7 @@ function flipTile(tile, img) {
 //function for reset the gameBoard
 function resetBoard () {
     $('#game-board').empty()
-    window.clearinterval(timer)
+    window.clearInterval(timer)
 }
 
 //function for turning the tile
