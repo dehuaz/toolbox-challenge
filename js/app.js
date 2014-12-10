@@ -16,6 +16,9 @@ var Score = 0;
 var Reminder =8;
 var Attempts =0;
 
+//Created a Instruction button for user to be inform on the function toward how to play the game
+var 
+
 $(document).ready(function() {
     //click button to start the game
     $('#start-game').click(function() {
@@ -50,9 +53,9 @@ $(document).ready(function() {
         //Varabile for StartingTIme
         var startTime = Date.now();
         timer = window.setInterval(function() {
-            $('#Score').text(Score)
-            $('#Reminder').text(Reminder)
-            $('#Attempts').text(Attempts)
+            $('#Score').text(Score);
+            $('#Reminder').text(Reminder);
+            $('#Attempts').text(Attempts);
             var elapsedSeconds = (Date.now() - startTime) / 1000;
             elapsedSeconds = Math.floor(elapsedSeconds)
             $('#elapsed-seconds').text(elapsedSeconds + ' seconds');
@@ -88,6 +91,9 @@ function flipTile(tile, img) {
 function resetBoard () {
     $('#game-board').empty()
     window.clearInterval(timer)
+    Score = 0;
+    Reminder = 8;
+    Attempts = 0;
 }
 
 //function for turning the tile
