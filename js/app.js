@@ -50,9 +50,9 @@ $(document).ready(function() {
         //Varabile for StartingTIme
         var startTime = Date.now();
         timer = window.setInterval(function() {
-            $(#Score).text(Score)
-            $(#Reminder).text(Reminder)
-            $(#Attempts).text(Attempts)
+            $('#Score').text(Score)
+            $('#Reminder').text(Reminder)
+            $('#Attempts').text(Attempts)
             var elapsedSeconds = (Date.now() - startTime) / 1000;
             elapsedSeconds = Math.floor(elapsedSeconds)
             $('#elapsed-seconds').text(elapsedSeconds + ' seconds');
