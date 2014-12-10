@@ -89,12 +89,14 @@ function turnup (tile,img) {
     turnTile.push(tile);
     turningPicture.push(img);
     if (turnTile.length == 2);
-    if (turnTile[1].tileNum == turnTile[2].tileNum);
-    turnTile[1].tileNum == turnTile[2].tileNum;
-    turnTile[1].matched = true;
-    turnTile[2].matched = true;
-    turningPicture[1].attr('src', turnTile[1].src);
-    turningPicture[2].attr('src', turnTile[2].src);
+        if (turnTile[1].tileNum == turnTile[2].tileNum) {
+            turnTile[1].tileNum == turnTile[2].tileNum;
+            turnTile[1].matched = true;
+            turnTile[2].matched = true;
+            turningPicture[1].attr('src', turnTile[1].src);
+            turningPicture[2].attr('src', turnTile[2].src); 
+        }
+        
 }
     else {
         turnTile[1].flipped = false;
@@ -106,8 +108,8 @@ function turnup (tile,img) {
     }
 }, 1000);
 
-    }
-        
+}
 
-
+function resetBoard() {
+    
 }
